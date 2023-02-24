@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drawing Board</title>
+  <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./main.js"></script>
+  <script src="https://kit.fontawesome.com/f6ff2ab540.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="wrap">
+
+    <h1>Let's Draw!</h1>
+
+    <div class="container">
+
+      <div class="toolbar upper-toolbar">
+
+        <div class="toggle-map">
+          <label class="switch">
+            <span class="map"><i class="fa-solid fa-map"></i></span>
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div class="menus">
+          <span class="undo"><i class="fa-solid fa-rotate-left"></i> undo</span>
+          <span class="clear"><i class="fa-solid fa-trash-can"></i> clear</span>
+          <span class="download"><i class="fa-solid fa-file-arrow-down"></i> save</span>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="mini-map hide">
+          <img src="#" alt="priview" />
+        </div>
+        <canvas width="700" height="500"></canvas>
+      </div>
+
+      <div class="toolbar under-toolbar">
+        <form class="tools">
+          <input type="radio" name="tool" id="brush" value="brush" checked>
+          <label for="brush" class="brush"><i class="fa-solid fa-paintbrush"></i></label>
+          <input type="radio" name="tool" id="eraser" value="eraser">
+          <label for="eraser" class="eraser"><i class="fa-solid fa-eraser"></i></label>
+          <input type="radio" name="tool" id="rect" value="rect">
+          <label for="rect" class="rect"><i class="fa-regular fa-square"></i></label>
+          <input type="radio" name="tool" id="circle" value="circle">
+          <label for="circle" class="circle"><i class="fa-regular fa-circle"></i></label>
+        </form>
+        <div class="size-panel">
+          <span class="size__text">size</span>
+          <input type="range" class="size__input" min="1" max="25" value="5" />
+          <div class="size__preview">
+            <div class="preview__circle">
+              <span></span>
+            </div>
+            <span class="preview__size">5</span>
+          </div>
+        </div>
+        <div class="color-picker">
+          <input type="color">
+        </div>
+      </div>
+
+    </div>
+    <div class="canvas-map"></div>
+  </div>
+</body>
+</html>
