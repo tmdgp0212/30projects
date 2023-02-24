@@ -150,7 +150,7 @@
 
     .under-toolbar {
       @include flex-center();
-      gap: 12px;
+      gap: 20px;
       padding: 0 20px;
 
 
@@ -219,10 +219,36 @@
       }
 
       .color-picker {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+
         input[type="color"] {
           padding: 0;
+          height: 35px;
           outline: none;
           border: none;
+        }
+
+        .colors {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          column-gap: 20px;
+          row-gap: 10px;
+
+          span {
+            width: 28px;
+            height: 28px;
+            background-color: #000;
+            border: 1px solid #d8d8d8;
+            border-radius: 50%;
+            transition: .4;
+            cursor: pointer;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
         }
       }
     }

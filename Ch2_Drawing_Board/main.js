@@ -9,6 +9,7 @@ const undoEl = document.querySelector('.toolbar .menus .undo')
 const minimapToggleInputEl = document.querySelector('.toolbar .toggle-map label input[type="checkbox"]')
 const minimapContainerEl = document.querySelector('.main .mini-map')
 const minimapImgEl = document.querySelector('.main .mini-map img')
+const colorsEl = document.querySelector('.toolbar .color-picker .colors')
 
 const context = canvasEl.getContext("2d")
 const history = []
@@ -57,15 +58,6 @@ canvasEl.addEventListener('mousemove', e => {
     previousImg.addEventListener('load', () => {
       context.drawImage(previousImg, 0, 0, canvasEl.width, canvasEl.height, 0, 0, canvasEl.width, canvasEl.height)
       context.strokeRect(sX, sY, currentPosition.x - sX, currentPosition.y - sY)
-    })
-    previousImg.src = prevDataUrl;
-  } else if(mode === 'circle') {
-    let previousImg = new Image();
-    let prevDataUrl = history.at(-1)
-    
-    previousImg.addEventListener('load', () => {
-      context.drawImage(previousImg, 0, 0, canvasEl.width, canvasEl.height, 0, 0, canvasEl.width, canvasEl.height)
-      context.arc(sX, sY, currentPosition.x - sX, 0, 2*Math.Pi)
     })
     previousImg.src = prevDataUrl;
   }
@@ -118,12 +110,18 @@ undoEl.addEventListener('click', () => {
   previousImg.src = prevDataUrl;
 })
 
+canvasClearEl.addEventListener('click', () => {
+  clearCanvas()
+})
+
 window.addEventListener('keydown', (e) => {
   if(e.ctrlKey && e.key === 'z') undoEl.click()
 })
 
-canvasClearEl.addEventListener('click', () => {
-  clearCanvas()
+colorsEl.addEventListener('click', e => {
+  console.log(e.target.style.backgroundColor)
+  brushColorInput.value = e.target.dataset.color
+  brushPriviewCircle.style.backgroundColor = e.target.dataset.color
 })
 
 function clearCanvas() {
@@ -154,3 +152,7 @@ function saveState() {
     history.push(canvasEl.toDataURL());
   }
 }
+
+Array.from(colorsEl.children).forEach((color) => {
+  color.style.backgroundColor = color.dataset.color
+})
