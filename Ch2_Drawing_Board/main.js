@@ -13,7 +13,7 @@ const saveEl = document.querySelector('.toolbar .menus .download')
 const colorsEl = document.querySelector('.toolbar .color-picker .colors')
 
 const context = canvasEl.getContext("2d")
-const history = []
+let history = []
 
 let sX = null
 let sY = null
@@ -107,6 +107,7 @@ undoEl.addEventListener('click', () => {
   previousImg.addEventListener('load', () => {
     context.clearRect(0, 0, canvasEl.width, canvasEl.height);
     context.drawImage(previousImg, 0, 0, canvasEl.width, canvasEl.height, 0, 0, canvasEl.width, canvasEl.height)
+    updateMinimap()
   })
   previousImg.src = prevDataUrl;
 })
@@ -126,9 +127,10 @@ window.addEventListener('keydown', (e) => {
 })
 
 colorsEl.addEventListener('click', e => {
-  console.log(e.target.style.backgroundColor)
-  brushColorInput.value = e.target.dataset.color
-  brushPriviewCircle.style.backgroundColor = e.target.dataset.color
+  if (e.target.dataset.color) {
+    brushColorInput.value = e.target.dataset.color
+    brushPriviewCircle.style.backgroundColor = e.target.dataset.color
+  }
 })
 
 function clearCanvas() {
