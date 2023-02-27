@@ -9,6 +9,7 @@ const undoEl = document.querySelector('.toolbar .menus .undo')
 const minimapToggleInputEl = document.querySelector('.toolbar .toggle-map label input[type="checkbox"]')
 const minimapContainerEl = document.querySelector('.main .mini-map')
 const minimapImgEl = document.querySelector('.main .mini-map img')
+const saveEl = document.querySelector('.toolbar .menus .download')
 const colorsEl = document.querySelector('.toolbar .color-picker .colors')
 
 const context = canvasEl.getContext("2d")
@@ -112,6 +113,12 @@ undoEl.addEventListener('click', () => {
 
 canvasClearEl.addEventListener('click', () => {
   clearCanvas()
+  history = [];
+})
+
+saveEl.addEventListener('click', () => {
+  saveEl.href = canvasEl.toDataURL("image/png",1)
+  saveEl.download = "my_artwork.png"
 })
 
 window.addEventListener('keydown', (e) => {

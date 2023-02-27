@@ -97,7 +97,7 @@
         display: flex;
         gap: 5px;
 
-        span {
+        span, a {
           @include flex-center();
           gap: 2px;
           padding: 5px 10px;
