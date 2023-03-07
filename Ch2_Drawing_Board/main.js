@@ -35,6 +35,7 @@ canvasEl.addEventListener('mousedown', e => {
   sY = currentPosition.y
   context.beginPath() // 경로시작
   context.lineCap = 'round' // 브러시 끝 모양
+  context.lineJoin = 'round' // 선과 선이 만났을때의 모서리
   context.lineWidth = brushSizeInput.value // 라인두께
   context.moveTo(currentPosition.x, currentPosition.y) //해당 좌표부터 라인을 그림
   if (mode === "eraser") {
